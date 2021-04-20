@@ -8,7 +8,7 @@ Fazer com que os usuários do strateegia consigam gerar arquivos com dados que c
 
 ## Como rodar
 
-- git clone https://github.com/wilsonwagner/Software_Engineering_2021.git
+- git clone https://github.com/gabrielgomesml/IF977.git
 - yarn
 - yarn start
 
