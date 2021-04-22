@@ -1,3 +1,3 @@
 import Login from './Login/Login';
-
-export { Login };
+import Modal from './Modal/Modal';
+export { Login, Modal };
