@@ -70,7 +70,7 @@ export const InputToggle = styled.input`
   } 
 `;
 
-export const LabelToggle = styled.label`
+export const LabelToggle = styled.label `
   margin-left: 3vmin;
   position: relative;
   display: block;
@@ -97,7 +97,7 @@ export const LabelToggle = styled.label`
 
 
   &:active:after{
-    transform: scale(1.15, 0.85);
+    transform: scale(1.15, 0.85)
   };
 `;
 

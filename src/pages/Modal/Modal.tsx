@@ -80,7 +80,6 @@ const Modal: React.FC = () => {
           <Button type= 'submit'>Gerar</Button>
         </DivButton>
       </DivBackground>
-  
     </Container>
 
  
