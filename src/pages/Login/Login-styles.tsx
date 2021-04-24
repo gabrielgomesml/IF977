@@ -56,10 +56,16 @@ export const SendButton = styled.button`
   color: ${theme.color.white};
   width: 60%;
   height: 2.7rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   align-self: flex-end;
   border: none;
   border-radius: 0.3rem;
   font: ${theme.font.bodyText};
   cursor: pointer;
+`;
+
+export const ErrorMessage = styled.p`
+  margin-top: 1rem;
+  font: ${theme.font.featuredText};
+  color: ${theme.color.red};
 `;
