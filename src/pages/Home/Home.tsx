@@ -3,26 +3,28 @@ import React, { FormEvent, useState } from 'react';
 import {
     Container, LogoStrateegia, MenuName, MenuContainer,
 
-    ContainerLeft, ContainerMain, ContainerSearch, SearchinInput, ContainerBottom, ContainerRight, ContainerSearchBarra, ContainerRightTop, ContainerSearchBarra2,
-    ContainerAnalysis, ContainerAnalysisMenu, ContainerQuantitative, ContainerPeoples, ContainerPeoplesDates, PeoplesIMG, PeoplesDates,
+    DivLogoStrateegia, ContainerLeft, ContainerMain, ContainerSearch, SearchinInput, ContainerBottom, ContainerRight, ContainerRightTop,
+    ContainerAnalysis, ContainerAnalysisMenu, ContainerQuantitative, ContainerPeoples,PeoplesIMG, PeoplesDates,P1,P2,
+    ContainerCenter, ContainerPeoplesCenter,  PeoplesDatesTittle,
+    BalaoIMG, QuestionIMG, ContainerEngagement, TextEngagement, TittleEngagement, InformationEngagement,
 
-    BalaoIMG, QuestionIMG, ContainerEngagement, TextEngagement, Engagement,
-
-    GridTema, GridHexagono, ImgImpressora, ImgDownloads, 
-
-    GridPeople, GridIMG, GridIMG2, GridIMG3, GridName, GridQuestion, GridFalas
+    Engagement,Pic,ContainerDivision,PicD
 
 } from './Home-styles';
 
+
+
 const Home: React.FC = () => {
   return (
+
     <ContainerMain>
 
         {/* MENU HEADER */}
 
         <Container>
-            <LogoStrateegia></LogoStrateegia>
-
+            <DivLogoStrateegia>
+                <LogoStrateegia src= "../img/logo.svg"></LogoStrateegia>
+            </DivLogoStrateegia>
             <MenuContainer>
                 <MenuName>Projetos</MenuName>
                 <MenuName>Ferramentas</MenuName>
@@ -36,21 +38,15 @@ const Home: React.FC = () => {
 
             <ContainerLeft>
                 <ContainerSearch>
-                    <SearchinInput placeholder="Buscar Projeto"></SearchinInput>
-
-                    <ContainerSearchBarra></ContainerSearchBarra>
-
-                </ContainerSearch>
-
-                
+                    <SearchinInput placeholder="Buscar Projeto"></SearchinInput>           
+                </ContainerSearch>     
             </ContainerLeft>
-
-            <ContainerSearchBarra2></ContainerSearchBarra2>  
 
             <ContainerRight>
                 {/*CONTAINER 1*/}
-                <ContainerRightTop> <h3>ES 2020.1</h3>
-                    Vinicius Garcia, Danilo Lira, fernando macedo, Ricardo Ferreira dos Santos Junior, Maria Estela, Renato Ferreira, Pedro Falcão, Andre Filho,...
+                <ContainerRightTop> 
+                    <P1> ES 2020.1 </P1>
+                    <P2>Vinicius Garcia, Danilo Lira, fernando macedo, Ricardo Ferreira dos Santos Junior, Maria Estela, Renato Ferreira, Pedro Falcão, Andre Filho,...</P2>
                 </ContainerRightTop> 
 
                 {/*CsONTAINER 2*/}
@@ -58,123 +54,165 @@ const Home: React.FC = () => {
                     <ContainerAnalysisMenu>Análise de Engajamento</ContainerAnalysisMenu>
                     <ContainerAnalysisMenu>Análise de Jornada</ContainerAnalysisMenu>
                 </ContainerAnalysis>
-
+                
                 {/*CONTAINER 3*/}
 
-                <ContainerQuantitative>
-                    
-                    <ContainerPeoples>
-                        <PeoplesIMG></PeoplesIMG>
-                        <ContainerPeoplesDates>
-                            
-                            <PeoplesDates><h2>49 Pessoas</h2></PeoplesDates>
+                <ContainerCenter>
+
+                    <ContainerQuantitative>
+                        
+                        <ContainerPeoples>
+                            <PeoplesIMG src = "../img/group.png" ></PeoplesIMG>                           
+                            <PeoplesDatesTittle>49 Pessoas</PeoplesDatesTittle>
                             <PeoplesDates>1 Administrador(a)</PeoplesDates>
                             <PeoplesDates>4 Mentores</PeoplesDates>
                             <PeoplesDates>44 Membros</PeoplesDates>
-                        </ContainerPeoplesDates>
-                    </ContainerPeoples>
+                          
+                        </ContainerPeoples>
 
-                    <ContainerPeoples>
-                        <QuestionIMG></QuestionIMG>
-                        <ContainerPeoplesDates>
-                            
-                            <PeoplesDates><h2>453 Questões Essenciais</h2></PeoplesDates>
+                        <ContainerPeoplesCenter>
+                            <QuestionIMG src = "../img/question.png" ></QuestionIMG>                              
+                            <PeoplesDatesTittle>453 Questões Essenciais</PeoplesDatesTittle>
                             <PeoplesDates>79 Ferramentas</PeoplesDates>
-                        </ContainerPeoplesDates>
-                    </ContainerPeoples>
-
-                    <ContainerPeoples>
-                        <BalaoIMG></BalaoIMG>
-                        <ContainerPeoplesDates>
                             
-                            <PeoplesDates><h2>2660 falas</h2></PeoplesDates>
+                        </ContainerPeoplesCenter>
+
+                        <ContainerPeoples>
+                            <BalaoIMG src = "../img/balao.png" ></BalaoIMG>                            
+                            <PeoplesDatesTittle>2660 falas</PeoplesDatesTittle>
                             <PeoplesDates>2331 respostas</PeoplesDates>
                             <PeoplesDates>329 comentários às respostas</PeoplesDates>
-                        </ContainerPeoplesDates>
-                    </ContainerPeoples>
+                           
+                        </ContainerPeoples>
 
-                </ContainerQuantitative>
+                    </ContainerQuantitative>
 
-                <TextEngagement><h1>Engajamento por ferramenta</h1></TextEngagement>
-                
-                {/*CONTAINER 4*/}
+                    <TextEngagement>Engajamento por ferramenta</TextEngagement>
+                    
+                    {/*CONTAINER 4*/}
 
-                <ContainerEngagement>
-                    <Engagement>
-                        <GridTema>
-                            <GridHexagono></GridHexagono>
-                            <GridName><h3>Mundo Figital</h3></GridName>
-                            <ImgImpressora></ImgImpressora>
-                            <ImgDownloads></ImgDownloads>                                
-                        </GridTema>
+                    <ContainerEngagement>
+                        <Engagement>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/1.png"  ></Pic>
+                                <TittleEngagement>mundo figital</TittleEngagement>
+                                <PicD src ="../img/d.png"  ></PicD>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/group2.png"  ></Pic>
+                                <InformationEngagement>37 pessoas</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/question2.png"  ></Pic>
+                                <InformationEngagement>5 questões</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/balao2.png"  ></Pic>
+                                <InformationEngagement> 219 falas</InformationEngagement>
+                            </ContainerDivision>     
+                        </Engagement>
 
-                        <GridPeople>
-                            <GridIMG></GridIMG>
-                            <GridName>37 Pessoas</GridName>
-                        </GridPeople>
+                        <Engagement>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/1.png"  ></Pic>
+                                <TittleEngagement>mundo figital</TittleEngagement>
+                                <PicD src ="../img/d.png"  ></PicD>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/group2.png"  ></Pic>
+                                <InformationEngagement>37 pessoas</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/question2.png"  ></Pic>
+                                <InformationEngagement>5 questões</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/balao2.png"  ></Pic>
+                                <InformationEngagement> 219 falas</InformationEngagement>
+                            </ContainerDivision>     
+                        </Engagement>
 
-                        <GridQuestion>
-                            <GridIMG2></GridIMG2>
-                            <GridName>5 Questões</GridName>
-                        </GridQuestion>
+                        <Engagement>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/1.png"  ></Pic>
+                                <TittleEngagement>mundo figital</TittleEngagement>
+                                <PicD src ="../img/d.png"  ></PicD>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/group2.png"  ></Pic>
+                                <InformationEngagement>37 pessoas</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/question2.png"  ></Pic>
+                                <InformationEngagement>5 questões</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/balao2.png"  ></Pic>
+                                <InformationEngagement> 219 falas</InformationEngagement>
+                            </ContainerDivision>     
+                        </Engagement>
 
-                        <GridFalas>
-                            <GridIMG3></GridIMG3>
-                            <GridName>219 Falas</GridName>
+                        <Engagement>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/1.png"  ></Pic>
+                                <TittleEngagement>mundo figital</TittleEngagement>
+                                <PicD src ="../img/d.png"  ></PicD>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/group2.png"  ></Pic>
+                                <InformationEngagement>37 pessoas</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/question2.png"  ></Pic>
+                                <InformationEngagement>5 questões</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/balao2.png"  ></Pic>
+                                <InformationEngagement> 219 falas</InformationEngagement>
+                            </ContainerDivision>     
+                        </Engagement>
 
-                        </GridFalas>
-                    </Engagement>
+                        <Engagement>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/1.png"  ></Pic>
+                                <TittleEngagement>mundo figital</TittleEngagement>
+                                <PicD src ="../img/d.png"  ></PicD>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/group2.png"  ></Pic>
+                                <InformationEngagement>37 pessoas</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/question2.png"  ></Pic>
+                                <InformationEngagement>5 questões</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/balao2.png"  ></Pic>
+                                <InformationEngagement> 219 falas</InformationEngagement>
+                            </ContainerDivision>     
+                        </Engagement>
 
-                    <Engagement>
-                        <GridTema>
-                            <GridHexagono></GridHexagono>
-                            <GridName><h3>Mundo Figital</h3></GridName>
-                            <ImgImpressora></ImgImpressora>
-                            <ImgDownloads></ImgDownloads>                                
-                        </GridTema>
-
-                        <GridPeople>
-                            <GridIMG></GridIMG>
-                            <GridName>37 Pessoas</GridName>
-                        </GridPeople>
-
-                        <GridQuestion>
-                            <GridIMG2></GridIMG2>
-                            <GridName>5 Questões</GridName>
-                        </GridQuestion>
-
-                        <GridFalas>
-                            <GridIMG3></GridIMG3>
-                            <GridName>219 Falas</GridName>
-
-                        </GridFalas>
-                    </Engagement>
-
-                    <Engagement>
-                    <GridTema>
-                            <GridHexagono></GridHexagono>
-                            <GridName><h3>Mundo Figital</h3></GridName>
-                            <ImgImpressora></ImgImpressora>
-                            <ImgDownloads></ImgDownloads>                                
-                        </GridTema>
-
-                        <GridPeople>
-                            <GridIMG></GridIMG>
-                            <GridName>37 Pessoas</GridName>
-                        </GridPeople>
-
-                        <GridQuestion>
-                            <GridIMG2></GridIMG2>
-                            <GridName>5 Questões</GridName>
-                        </GridQuestion>
-
-                        <GridFalas>
-                            <GridIMG3></GridIMG3>
-                            <GridName>219 Falas</GridName>
-
-                        </GridFalas>
-                    </Engagement>                    
-                </ContainerEngagement>
+                        <Engagement>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/1.png"  ></Pic>
+                                <TittleEngagement>mundo figital</TittleEngagement>
+                                <PicD src ="../img/d.png"  ></PicD>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/group2.png"  ></Pic>
+                                <InformationEngagement>37 pessoas</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/question2.png"  ></Pic>
+                                <InformationEngagement>5 questões</InformationEngagement>
+                            </ContainerDivision>
+                            <ContainerDivision>                           
+                                <Pic src ="../img/balao2.png"  ></Pic>
+                                <InformationEngagement> 219 falas</InformationEngagement>
+                            </ContainerDivision>     
+                        </Engagement>
+                    </ContainerEngagement>
+                </ContainerCenter>
             </ContainerRight>
         </ContainerBottom>
         

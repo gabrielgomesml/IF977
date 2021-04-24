@@ -3,46 +3,51 @@ import theme from '../../styles/theme';
 
 // TELA COMPLETA:
 export const ContainerMain = styled.div `
-    display: flex;
-    flex-direction: column;
     background-color: #dcdcdc;
-    width: 100%;
-    height: 100%;
+    margin:0;
+    overflow:none;
+
 `;
 
 // MENU:
 export const Container = styled.div `
     display: flex;
+    flex-direction: row;
     align-items: center;
-    width: 100%;
-    height: 99px;
-    left: 0px;
     background-color: #1A73E8;
+    height:7.5vh;
+
+  
+ 
 `;
 
 export const MenuContainer = styled.div `
     display: flex;
-    align-items: center;
-    width: 1252px;
-    height: 35px;
-    left: 399px;
-    top: 34px;
+    flex-direction:row;
+
 `;
 
-export const LogoStrateegia = styled.div `
-    background: url("../img/logo.svg") no-repeat;
-    width: 308px;
-    height: 79px;
-    margin-top: 15px;
-    margin-left: 50px;
+export const DivLogoStrateegia = styled.div `
+    width:21.2vw;
+    height: 6vh;
+    display:flex;
+    justify-content:center;
+ 
+`; 
+
+
+export const LogoStrateegia = styled.img `
+    width:15vw;
+    height: 6vh;
+ 
 `; 
 
 export const MenuName = styled.div `
-    margin-left: 50px;
+    margin-right: 3.5vw;
     //font-family: Heebo;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 0.9vw;
     color: #FFFFFF;
     cursor: pointer;
 `;
@@ -50,6 +55,7 @@ export const MenuName = styled.div `
 //BARRA ABAIXO DO MENU:
 export const ContainerBottom = styled.div `
     display: flex;
+    flex-direction:row;
 `;
 
 // BARRA DA ESQUERDA:
@@ -57,32 +63,28 @@ export const ContainerLeft = styled.div `
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    height: 100vh;
-    width: 400px;
+    width: 20vw;
+    border-right: 0.1vh solid #dcdcdc;
+    
 `;
 
 export const ContainerSearch = styled.div `
-    width: 100%;
-    height: 15%;
+    height:8vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-bottom: 0.1vh solid #dcdcdc;
 `;
 
-export const ContainerSearchBarra = styled.div `
-    height: 1px;
-    width: 100%;
-    margin-top: 8%;
-    background-color: #bbbbbb; 
-`;
+
+
 
 export const SearchinInput = styled.input `
-    height: 41px;
-    width: 250px;
-    padding-left: 50px;
+    height: 5vh;
+    width: 17vw;
+    font-size: 1.1vw;
     background-color: #d3d3d3;
-    border-radius: 50px;
+    border-radius:  0.5vw;
     border: none;
     outline: none;
 `;
@@ -94,185 +96,204 @@ export const ContainerRight = styled.div `
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    height: 96px;
-    width: 100%;
+    width:80vw;
+   
+
+   
 `;
 
 export const ContainerRightTop = styled.div `
-    margin-top: 22px;
-    margin-left: 50px;
-    margin-bottom: 31px;
+    display:flex;
+    flex-direction:column;
+  
+    height:8vh;
+    border-bottom: 0.1vh solid #dcdcdc;
+    
+    
 `;
 
-export const ContainerSearchBarra2 = styled.div `
-    width: 2px;
-    background-color: #bbbbbb; 
+export const P1 = styled.h3 `
+    margin-left:3vw;
+    margin-bottom: 0.5vh;
+    margin-top:1.5vh;
+    font-size: 1vw;
+    
+    
 `;
 
-// 2º BARRA:
+export const P2 = styled.p `
+    margin-left:3vw;
+    font-size: 0.85vw
+`;
+
+
+
 export const ContainerAnalysis = styled.div `
     display: flex;
     align-items: center;
+    text-align:center;  
     background-color: #ffffff;
-    height: 100%;
-    width: 100%;
-    padding-bottom: 30px;
+    border-bottom: 0.1vh solid #dcdcdc;
+    height:6.5vh;
+ 
 `;
 
-export const ContainerAnalysisMenu = styled.div `
-    padding-left: 50px;
-    padding-top: 20px;
+export const ContainerAnalysisMenu = styled.p `
+    font-size:0.9vw;
+    margin-left:2vw;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
 
 `;
 
 // 3º BARRA:
+export const ContainerCenter = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items:center; 
+    background-color:#f8f8f8;
+`;
+
 export const ContainerQuantitative = styled.div `
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;    
+    justify-content: center;  
+    margin-top: 5vh;
+     
 `;
 
 export const ContainerPeoples = styled.div `
+    font-size:1vw;
     display: flex;
     flex-direction: column;
-    padding: 50px;
-    padding-top: 70px;
-    justify-content: center;
-    align-items: center;
-    border-left: 0.5px solid #bdbdbd;
+    width:18vw;
+    padding:2vw 0;
+    justify-content: flex-start;
+    align-items: center;    
+
 `;
 
 
-export const ContainerPeoplesDates = styled.div `
+export const ContainerPeoplesCenter = styled.div `
+    font-size:1vw;
+    display: flex;
+    flex-direction: column;
+    width:18vw;
+    padding:2vw 5vw;
+    justify-content: flex-start;
+    align-items: center; 
+    border-left:  0.1vh solid #dcdcdc;
+    border-right:  0.1vh solid #dcdcdc;
 `;
+
+export const PeoplesDatesTittle = styled.h3 `
+    text-align: center;
+    display: block;
+    font-size: 1.2vw;
+    margin-bottom: 1vh;
+    width:10vw;
+    font-weight: bold;
+`;
+
+
 
 export const PeoplesDates = styled.div `
+    font-size: 1vw;
     text-align: center;
+    margin-bottom: 1vh;
 `;
 
-export const PeoplesIMG = styled.div `
-    background: url("../img/group.png") no-repeat;
-    width: 100%;
-    height: 100px;
-    background-position: center;
+export const PeoplesIMG = styled.img `
+    
+    height:10vh;
+    margin-bottom:5vh;
+ 
 `;
 
-export const BalaoIMG = styled.div `
-    background: url("../img/balao.png") no-repeat;
-    width: 100%;
-    height: 100px;
-    background-position: center;
+export const BalaoIMG = styled.img `
+    height:10vh;
+    margin-bottom:5vh;
 `;
 
-export const QuestionIMG = styled.div `
-    background: url("../img/question.png") no-repeat;
-    width: 100%;
-    height: 100px;
-    background-position: center;
+export const QuestionIMG = styled.img `
+    height:10vh;
+    margin-bottom:5vh;
 `;
 
 // 4º BARRA:
 
-export const Engagement = styled.div `
-    margin-left: 50px;
-    background-color: #ffffff;
-    width: 280px;
-    height: 250px;
-    margin-bottom: 50px;
-    border-radius: 20px;
-    text-align: center;
-    border-right: 5px solid #aaaaaa;
-    border-bottom: 5px solid #aaaaaa;
-`;
 
-export const ContainerEngagement = styled.div `
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 600px;
-    padding-left: 150px;
-`;
-
-export const TextEngagement = styled.div `
+export const TextEngagement = styled.h1 `
     text-align: center;
     font-weight: bold;
-    padding-bottom: 50px;
+    margin-top: 4.5vh;
+    margin-bottom: 4.5vh;
+    font-size: 1.8vw;
 
 `;
 
-// >>>> GRIDS
-export const GridTema = styled.div `
-    display: grid;
-    grid-template-columns: 1fr 0.1fr 0.5fr 0.7fr;
-    padding-top: 20px;
 
-`;
-
-export const GridHexagono = styled.div `
-    background: url("../img/1asd.png") no-repeat;
-    width: 100%;
-    height: 100%;
-    background-position: center;
-`;
-
-export const GridName = styled.div `
-    text-align: left;
-`;
-
-export const ImgImpressora = styled.div `
-    background: url("../img/i.png") no-repeat;
-    background-position: right;
-    cursor: pointer;
-    padding-left: 20px;
+export const ContainerEngagement = styled.div `
+    display:flex;
+    flex-wrap:wrap;
+    width:49.5vw;
+ 
+   
+  
     
 `;
 
-export const ImgDownloads = styled.div `
-    background: url("../img/d.png") no-repeat;
-    background-position: right;
-    margin-right: 20px;
+export const Engagement = styled.div `
+    display:flex;
+    flex-direction:column;
+    background-color:#fff;
+    margin: 0 2vw 2vw 0;
+    width:14.5vw;
+    height:26.62vh;
+    border-radius: 0.4vw;
+    
+`;
+
+
+
+export const ContainerDivision = styled.div `
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+     
+`;
+
+
+export const TittleEngagement = styled.h3 `
+    margin-top:2vh;
+    margin-left:1vw;
+    margin-right:0.8vw;
+    font-size:1vw;
+
+    
+`;
+
+export const InformationEngagement = styled.p `
+    margin-top:2vh;
+    margin-left:1vw;
+    font-size:1vw;
+    
+`;
+  
+
+
+export const Pic = styled.img `
+    margin-top:2vh;
+    margin-left:0.7vw;
+    width:1.5vw;
+    height:1.5vw;
+`;
+
+export const PicD = styled.img `
+    margin-top:2vh;
+    margin-left:0.7vw;
+    width:1.5vw;
+    height:1.5vw;
     cursor: pointer;
-
-`;
-
-export const GridPeople = styled.div `
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-    padding-top: 20px;
-
-`;
-export const GridIMG = styled.div `
-    background: url("../img/group2.png") no-repeat;
-    width: 100%;
-    height: 100%;
-    padding-bottom: 30px;
-    margin-left: 25px;
-`;
-export const GridIMG2 = styled.div `
-    background: url("../img/question2.png") no-repeat;
-    width: 100%;
-    height: 100%;
-    padding-bottom: 30px;
-    margin-left: 25px;
-`;
-export const GridIMG3 = styled.div `    
-    background: url("../img/balao2.png") no-repeat;
-    width: 100%;
-    height: 100%;
-    padding-bottom: 30px;
-    margin-left: 25px;
-`;
-
-export const GridQuestion = styled.div `
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-    padding-top: 20px;
-
-`;
-export const GridFalas = styled.div `
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-    padding-top: 20px;
 `;
