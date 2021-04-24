@@ -63,3 +63,4 @@ export const SendButton = styled.button`
   font: ${theme.font.bodyText};
   cursor: pointer;
 `;
+
