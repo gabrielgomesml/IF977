@@ -2,10 +2,24 @@ import React from 'react';
 
 
 import {
-  Container,ContainerLogo,ContainerTittle, ImgTittle,TextTittle,ContainerTextTittle,TextTittleP,ContainerGadgets
-  ,ImgGadgets, ContainerTextGadgets, TextGadgest,AlignGadgets,ContainerCenter,TittleCenter,TextDescription,ContainerParticipants,
-  NameParticipants,SizeContainerParticipants,Initials, ContainerRef, TittleRef, LinkRef,
-  ContainerLinks, TextLink, NameLinks, TittleLinks,LinksC
+  LinksC,
+  TittleRef,LinkRef,
+  NameLinks,TittleLinks,
+  Initials,ContainerRef,
+  Container,ContainerLogo,
+  ContainerLinks,TextLink,
+  TextGadgest,AlignGadgets,
+  ContainerTittle,ImgTittle,
+  ContainerCenter,TittleCenter,
+  TextTittleP,ContainerGadgets,
+  TextTittle,ContainerTextTittle,
+  ImgGadgets,ContainerTextGadgets,
+  TextDescription,ContainerParticipants,
+  NameParticipants,SizeContainerParticipants,
+
+
+ 
+
 } from './Template-styles';
 
 const Template: React.FC = () => { 
