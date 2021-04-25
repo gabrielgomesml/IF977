@@ -1,13 +1,14 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Login, Home, Modal } from '../pages';
+import PrivateRoute from './PrivateRoutes';
+
 
 
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/login" component={Login} />
-    <Route path="/Modal" component = {Modal}/>
-    <Route path="/home" component={Home} />
+    <PrivateRoute path="/home" component={Home} isPrivate />
   </Switch>
 
 );
