@@ -153,10 +153,9 @@ export const ContainerAnalysisMenu = styled.p `
 `;
 
 // 3º BARRA:
-export const ContainerCenter = styled.div `
-    padding-top: 35vh;
-    height: 80vh;
-    display: flex;
+export const ContainerCenter = styled.div`
+    height: 78vh;
+    display: block;
     flex-direction: column;
     justify-content: center; 
     align-items:center; 
@@ -245,32 +244,43 @@ export const TextEngagement = styled.h1 `
 
 export const ContainerEngagement = styled.div `
     display:flex;
-    flex-wrap:wrap;
+    justify-content:left;
     width:49.5vw;
- 
-   
-  
-    
+    margin:0 17vw; 
+    flex-wrap:wrap;  
 `;
 
 export const Engagement = styled.div `
+    padding: 1rem;
     display:flex;
     flex-direction:column;
     background-color:#fff;
     margin: 0 2vw 2vw 0;
     width:14.5vw;
-    height:26.62vh;
+    min-height:26.62vh;
+    height: auto;
     border-radius: 0.4vw;
     
 `;
 
-
+export const ContainerDivisionTitle = styled.div `
+    display:flex;
+    flex-direction: row;
+    align-items:center;     
+`;
 
 export const ContainerDivision = styled.div `
     display:flex;
     flex-direction: row;
     align-items:center;
      
+`;
+
+export const ContainerDivisionDownload = styled.div `
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    cursor: pointer;
 `;
 
 
@@ -294,14 +304,12 @@ export const InformationEngagement = styled.p `
 
 export const Pic = styled.img `
     margin-top:2vh;
-    margin-left:0.7vw;
     width:1.5vw;
     height:1.5vw;
 `;
 
 export const PicD = styled.img `
     margin-top:2vh;
-    margin-left:0.7vw;
     width:1.5vw;
     height:1.5vw;
     cursor: pointer;

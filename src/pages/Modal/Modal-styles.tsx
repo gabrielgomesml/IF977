@@ -16,6 +16,7 @@ export const Container = styled.div<ModalProps>`
   background-color: rgba(0, 0, 0, 0.5);;
   position: absolute;
   display: ${props => (props.modalActive ? 'block' : 'none')};
+  z-index: 1000;
 `;
 
 export const DivBackground = styled.div<ModalProps>`
