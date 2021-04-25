@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 
+export const BigContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: none;
+`;
+
 // TELA COMPLETA:
 export const ContainerMain = styled.div `
     background-color: #dcdcdc;
     margin:0;
     overflow:none;
-
 `;
 
 // MENU:
@@ -148,11 +154,14 @@ export const ContainerAnalysisMenu = styled.p `
 
 // 3º BARRA:
 export const ContainerCenter = styled.div `
+    padding-top: 35vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items:center; 
     background-color:#f8f8f8;
+    overflow-y: scroll;
 `;
 
 export const ContainerQuantitative = styled.div `
@@ -180,7 +189,7 @@ export const ContainerPeoplesCenter = styled.div `
     display: flex;
     flex-direction: column;
     width:18vw;
-    padding:2vw 5vw;
+    padding:2vw 0;
     justify-content: flex-start;
     align-items: center; 
     border-left:  0.1vh solid #dcdcdc;

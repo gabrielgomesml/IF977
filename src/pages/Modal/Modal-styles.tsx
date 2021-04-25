@@ -1,23 +1,35 @@
+import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
+interface ModalProps
+  extends React.DetailsHTMLAttributes<HTMLAttributes<HTMLDivElement>> {
+  modalActive?: boolean;
+}
 
-export const Container = styled.div`
+export const Container = styled.div<ModalProps>`
   width: 100vw;
-  height: 100vh;
+  height: 138.5vh;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: rgba(0, 0, 0, 0.5);;
+  position: absolute;
+  display: ${props => (props.modalActive ? 'block' : 'none')};
 `;
 
-export const DivBackground = styled.div`
+export const DivBackground = styled.div<ModalProps>`
   width: 70vmin;
   height: 75vmin;
   background: #FFFFFF;
   mix-blend-mode: normal;
   box-shadow: 0 1vmin 3vmin 3vmin rgba(0, 0, 0, 0.25);
   border-radius: 4vmin;
+  justify-self: center;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
 `;
 
 export const DivBody = styled.div`
