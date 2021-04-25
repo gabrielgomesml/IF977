@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import getToken from '../../Hooks/getData';
 import { useDataContext } from '../../utils/dataContext';
+import { useHistory } from 'react-router-dom';
+
+
 
 import {
   Container,
@@ -20,6 +23,7 @@ const Login: React.FC = () => {
   const [access_token, setAccess_token] = useState('');
   const [messageError, setMessageError] = useState(false);
   const [token, setToken] = useDataContext();
+  const history = useHistory();
   const axios = require('axios').default;
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>)=> {
@@ -45,6 +49,7 @@ const Login: React.FC = () => {
     if (res && res.data) {
       setAccess_token(res.data.access_token);
       settingToken(res.data.access_token);
+      history.push('/home');
     }
   }
 
@@ -63,7 +68,7 @@ const Login: React.FC = () => {
           </SingleInputContainer>
           {/* <ErrorMessage>Email ou senha incorretos!</ErrorMessage> */}
         </InputsContainer>
-        <SendButton onClick={() => handleToken(email, password)} >Entrar</SendButton>
+        <SendButton onClick={() => handleToken(email, password)}>Entrar</SendButton>
       </LoginCard>
     </Container>
   );

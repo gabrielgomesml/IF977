@@ -61,7 +61,11 @@ export const SendButton = styled.button`
   border: none;
   border-radius: 0.3rem;
   font: ${theme.font.bodyText};
-  cursor: pointer;
+  cursor: pointer;     
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ErrorMessage = styled.p`
