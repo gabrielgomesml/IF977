@@ -18,10 +18,14 @@ Esse projeto foi proposto a partir da disciplina de Engenharia de Software (IF97
 
 ## Time
 
-Gabriel Melo (ggm@cin.ufpe.br)
-Matheus Araújo (mna2@cin.ufpe.br)
-Maurício Felipe (mfgf@cin.ufpe.br)
-Wilson Wagner (wwsn@cin.ufpe.br)
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/gabrielgomesml"><img src="https://i.imgur.com/zOCjv53.jpeg" width="100px;" alt="Gabriel"/><br /><sub><b>Gabriel Melo</b></sub></a><br/>  
+    <td align="center"><a href="https://github.com/mna2"><img src="https://i.imgur.com/GdN832m.jpg" width="100px;" alt="Matheus"/><br /><sub><b>Matheus do Nascimento</b></sub></a><br/>
+     <td align="center"><a href="https://github.com/MauricioFGF"><img src="https://i.imgur.com/crcg9Sz.jpeg" width="100px;" alt="Mauricio"/><br /><sub><b>Mauricio Felipe</b></sub></a><br/>  
+    <td align="center"><a href="https://github.com/wilsonwagner"><img src="https://i.imgur.com/SgHPuw2.jpg" width="100px;" alt="Wilson"/><br /><sub><b>Wilson Wagner</b></sub></a>
+  </tr>
+</table>
 
 ## Link úteis
 
