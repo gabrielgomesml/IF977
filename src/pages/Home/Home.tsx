@@ -39,6 +39,8 @@ import {
     ContainerDivisionTitle,
     ContainerDivisionDownload,
 } from './Home-styles';
+import { count } from 'node:console';
+import { stringify } from 'querystring';
 
 
 
@@ -46,6 +48,8 @@ const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projects, setProjects] = useState<any>([]);
   const [selectedProject, setSelectedProject] = useState('');
+  const [Hexagono, setHexagono] = useState('');
+  const [Pessoas, setPessoas] = useState<any>([]);
   const [kits, setKits] = useState<any>([]);
   const [statistics, setStatistics] = useState<any>();
   const axios = require('axios').default;
@@ -56,7 +60,7 @@ const Home: React.FC = () => {
     if (body !== null) {
       body.style.overflow === 'hidden'
         ? (body.style.overflow = 'visible')
-        : (body.style.overflow = 'visble');
+        : (body.style.overflow = 'visible');
     }
   };
 
@@ -85,11 +89,51 @@ const Home: React.FC = () => {
     if (token) {
         const res = await axios.get(`https://api.strateegia.digital/projects/v1/project/${projectId}/statistics`, {headers:{"Authorization":`Bearer ${token}`}})
         if (res && res.data) {
-            console.log(res.data)
+    
             setStatistics(res.data)
         }
     }
   }
+
+
+
+
+
+  const loadPessoas = async (projectId: string) => {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+        const res = await axios.get(`https://api.strateegia.digital/projects/v1/project/${projectId}`, {headers:{"Authorization":`Bearer ${token}`}})
+        if (res && res.data) {
+            var Array = res.data.users
+            var Admin = 0
+            var Mentor = 0
+            var Membro = 0
+            Array.map((data: { project_roles: any }) => {
+                if (data.project_roles[0] == "MENTOR") {
+                    Mentor+=1
+              } else if (data.project_roles[0] == "ADMIN") {       
+                  Admin +=1
+              } else{Membro +=1}
+              
+              })
+
+            const totalPessoas = Admin + Mentor + Membro   
+            setPessoas({Administradores:Admin, Mentores:Mentor, Membros:Membro, Total:totalPessoas })
+            
+           
+        }
+    }
+  }
+ 
+  const Hex = async (type: string) => {
+      if (type = "LEARNING"){
+        setHexagono("../img/4.png")
+      }else if (type = "METHOD"){
+        setHexagono("../img/1.png")
+      }else{ setHexagono("../img/3.png")}
+  }
+
+
 
   const loadKits = async (projectId: string) => {
     const token = localStorage.getItem('access_token');
@@ -97,15 +141,18 @@ const Home: React.FC = () => {
         const res = await axios.get(`https://api.strateegia.digital/projects/v1/project/${projectId}/content-engagement`, {headers:{"Authorization":`Bearer ${token}`}})
         if (res && res.data) {
             setKits(res.data);
-            console.log(res.data);
+            console.log(res.data)
         }
     }
   }
+
+  
 
   const handleSelectedProject = (value: string) => {
       setSelectedProject(value);
       loadKits(value);
       loadStatistics(value);
+      loadPessoas(value);
   }
 
   useEffect(() => {
@@ -115,7 +162,7 @@ const Home: React.FC = () => {
   return (
     <>
     <BigContainer>
-        <Modal setModalOpen={setIsModalOpen} modalOpen={isModalOpen}></Modal>
+        <Modal setModalOpen={setIsModalOpen} modalOpen={isModalOpen} ></Modal>
         <ContainerMain>
 
             {/* MENU HEADER */}
@@ -163,11 +210,11 @@ const Home: React.FC = () => {
                             <ContainerQuantitative>
                                 
                             <ContainerPeoples>
-                                <PeoplesIMG src = "../img/group.png" ></PeoplesIMG>                           
-                                <PeoplesDatesTittle>49 Pessoas</PeoplesDatesTittle>
-                                <PeoplesDates>1 Administrador(a)</PeoplesDates>
-                                <PeoplesDates>4 Mentores</PeoplesDates>
-                                <PeoplesDates>44 Membros</PeoplesDates>
+                                <PeoplesIMG src = "../img/group.png" ></PeoplesIMG>                     
+                                <PeoplesDatesTittle>{Pessoas.Total} Pessoas</PeoplesDatesTittle>
+                                <PeoplesDates>{Pessoas.Administradores} Administrador(a)</PeoplesDates>
+                                <PeoplesDates>{Pessoas.Mentores} Mentores</PeoplesDates>
+                                <PeoplesDates>{Pessoas.Membros} Membros</PeoplesDates>
                             
                             </ContainerPeoples>
 
@@ -196,148 +243,27 @@ const Home: React.FC = () => {
 
                         <ContainerEngagement>
                             {kits?.map((kit: { id: string; parent_comments_count: number; people_count: number; question_count: number; reply_comments_count: number; title: string; total_comments_count: number; type: string;}) => (
-                                <Engagement>
-                                <ContainerDivisionTitle>                           
-                                    <Pic src ="../img/1.png"  ></Pic>
+                                
+                                <Engagement onClick={openOrCloseModal} onLoad={()=>Hex(kit.type)}>
+                                    <ContainerDivisionTitle>  
+                                    <Pic src ={Hexagono} ></Pic>
                                     <TittleEngagement>{kit.title}</TittleEngagement>
-                                </ContainerDivisionTitle>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/group2.png"  ></Pic>
-                                    <InformationEngagement>{kit.people_count} pessoas</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/question2.png"  ></Pic>
-                                    <InformationEngagement>{kit.question_count} questões</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/balao2.png"  ></Pic>
-                                    <InformationEngagement>{kit.total_comments_count} falas</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivisionDownload onClick={openOrCloseModal}>                           
-                                    <PicD src ="../img/d.png" ></PicD>
-                                    <InformationEngagement>Download</InformationEngagement>
-                                </ContainerDivisionDownload>   
-                            </Engagement>
+                                    </ContainerDivisionTitle>
+                                        
+                                    <ContainerDivision>                           
+                                        <Pic src ="../img/group2.png"  ></Pic>
+                                        <InformationEngagement>{kit.people_count} pessoas</InformationEngagement>
+                                    </ContainerDivision>
+                                    <ContainerDivision>                           
+                                        <Pic src ="../img/question2.png"  ></Pic>
+                                        <InformationEngagement>{kit.question_count} questões</InformationEngagement>
+                                    </ContainerDivision>
+                                    <ContainerDivision>                           
+                                        <Pic src ="../img/balao2.png"  ></Pic>
+                                        <InformationEngagement>{kit.total_comments_count} falas</InformationEngagement>
+                                    </ContainerDivision>
+                                </Engagement>
                             ))}
-                            {/* <Engagement>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/1.png"  ></Pic>
-                                    <TittleEngagement>mundo figital</TittleEngagement>
-                                    <PicD src ="../img/d.png" onClick={openOrCloseModal} ></PicD>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/group2.png"  ></Pic>
-                                    <InformationEngagement>37 pessoas</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/question2.png"  ></Pic>
-                                    <InformationEngagement>5 questões</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/balao2.png"  ></Pic>
-                                    <InformationEngagement> 219 falas</InformationEngagement>
-                                </ContainerDivision>     
-                            </Engagement> */}
-
-                            {/* <Engagement>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/1.png"  ></Pic>
-                                    <TittleEngagement>mundo figital</TittleEngagement>
-                                    <PicD src ="../img/d.png" onClick={openOrCloseModal} ></PicD>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/group2.png"  ></Pic>
-                                    <InformationEngagement>37 pessoas</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/question2.png"  ></Pic>
-                                    <InformationEngagement>5 questões</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/balao2.png"  ></Pic>
-                                    <InformationEngagement> 219 falas</InformationEngagement>
-                                </ContainerDivision>     
-                            </Engagement>
-
-                            <Engagement>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/1.png"  ></Pic>
-                                    <TittleEngagement>mundo figital</TittleEngagement>
-                                    <PicD src ="../img/d.png"  ></PicD>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/group2.png"  ></Pic>
-                                    <InformationEngagement>37 pessoas</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/question2.png"  ></Pic>
-                                    <InformationEngagement>5 questões</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/balao2.png"  ></Pic>
-                                    <InformationEngagement> 219 falas</InformationEngagement>
-                                </ContainerDivision>     
-                            </Engagement>
-
-                            <Engagement>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/1.png"  ></Pic>
-                                    <TittleEngagement>mundo figital</TittleEngagement>
-                                    <PicD src ="../img/d.png"  ></PicD>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/group2.png"  ></Pic>
-                                    <InformationEngagement>37 pessoas</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/question2.png"  ></Pic>
-                                    <InformationEngagement>5 questões</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/balao2.png"  ></Pic>
-                                    <InformationEngagement> 219 falas</InformationEngagement>
-                                </ContainerDivision>     
-                            </Engagement>
-
-                            <Engagement>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/1.png"  ></Pic>
-                                    <TittleEngagement>mundo figital</TittleEngagement>
-                                    <PicD src ="../img/d.png"  ></PicD>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/group2.png"  ></Pic>
-                                    <InformationEngagement>37 pessoas</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/question2.png"  ></Pic>
-                                    <InformationEngagement>5 questões</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/balao2.png"  ></Pic>
-                                    <InformationEngagement> 219 falas</InformationEngagement>
-                                </ContainerDivision>     
-                            </Engagement>
-
-                            <Engagement>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/1.png"  ></Pic>
-                                    <TittleEngagement>mundo figital</TittleEngagement>
-                                    <PicD src ="../img/d.png"  ></PicD>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/group2.png"  ></Pic>
-                                    <InformationEngagement>37 pessoas</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/question2.png"  ></Pic>
-                                    <InformationEngagement>5 questões</InformationEngagement>
-                                </ContainerDivision>
-                                <ContainerDivision>                           
-                                    <Pic src ="../img/balao2.png"  ></Pic>
-                                    <InformationEngagement> 219 falas</InformationEngagement>
-                                </ContainerDivision>     
-                            </Engagement> */}
                         </ContainerEngagement>
                     </ContainerCenter>
                 </ContainerRight>

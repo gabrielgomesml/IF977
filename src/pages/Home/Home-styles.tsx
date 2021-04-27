@@ -70,8 +70,7 @@ export const ContainerLeft = styled.div `
     flex-direction: column;
     background-color: #ffffff;
     width: 20vw;
-    border-right: 0.1vh solid #dcdcdc;
-    
+    border-right: 0.1vh solid #dcdcdc; 
 `;
 
 export const ContainerSearch = styled.div `
@@ -81,7 +80,6 @@ export const ContainerSearch = styled.div `
     align-items: center;
     border-bottom: 0.1vh solid #dcdcdc;
 `;
-
 
 
 
@@ -246,12 +244,12 @@ export const ContainerEngagement = styled.div `
     display:flex;
     justify-content:left;
     width:49.5vw;
-    margin:0 17vw; 
+    margin:0 16vw; 
     flex-wrap:wrap;  
 `;
 
 export const Engagement = styled.div `
-    padding: 1rem;
+    padding: 1.3vw;
     display:flex;
     flex-direction:column;
     background-color:#fff;
@@ -260,6 +258,10 @@ export const Engagement = styled.div `
     min-height:26.62vh;
     height: auto;
     border-radius: 0.4vw;
+    cursor: pointer;
+    &&:hover{
+        box-shadow:rgb(0,0,0,0.2) 0 0 0.6vw 0.4vw;
+    }
     
 `;
 
@@ -303,6 +305,7 @@ export const InformationEngagement = styled.p `
 
 
 export const Pic = styled.img `
+
     margin-top:2vh;
     width:1.5vw;
     height:1.5vw;
