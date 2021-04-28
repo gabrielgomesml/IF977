@@ -43,6 +43,6 @@ Esse projeto foi proposto a partir da disciplina de Engenharia de Software (IF97
 
 ## Link úteis
 
-Kanban: https://www.notion.so/11c5511058cd48d8ad75ec1b322ccd77?v=9f2e812d1a9c42699b15a762a0a01b24
-Notion: https://www.notion.so/Software-Engineer-Project-875cb22d422648f8a01b9ac0bfd9ae8c
-Figma: https://www.figma.com/file/NLl2TUZgzBQr8wIzU95E1o/Softwre-Enginer?node-id=0%3A1
+- Kanban: https://www.notion.so/11c5511058cd48d8ad75ec1b322ccd77?v=9f2e812d1a9c42699b15a762a0a01b24
+- Notion: https://www.notion.so/Software-Engineer-Project-875cb22d422648f8a01b9ac0bfd9ae8c
+- Figma: https://www.figma.com/file/NLl2TUZgzBQr8wIzU95E1o/Softwre-Enginer?node-id=0%3A1
