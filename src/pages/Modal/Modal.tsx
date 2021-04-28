@@ -25,7 +25,6 @@ const Modal: React.FC<ModalProps> = ({setModalOpen, modalOpen}) => {
   const modalRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const closeModal = (e: any) => {
-    console.log('testeeee')
     if (modalRef.current != e.target) {
       const body = document.querySelector('body');
       if (body !== null) {
