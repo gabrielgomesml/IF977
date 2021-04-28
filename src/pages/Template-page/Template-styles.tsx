@@ -208,4 +208,7 @@ export const LinksC = styled.a`
     margin-bottom:1vw;
 `;
 
-
+export const Question = styled.p`
+    margin-left:2vw ;
+    margin-bottom: 1vw;
+`;

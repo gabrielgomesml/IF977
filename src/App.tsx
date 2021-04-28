@@ -3,8 +3,7 @@ import GlobalStyles from "./styles/global";
 import theme from '../src/styles/theme';
 import { BrowserRouter } from 'react-router-dom';
 import DataProvider from './utils/dataContext';
-
-import { Login } from './pages/index'
+import TemplateProvider from './utils/templateContext';
 
 import Routes from './routes';
 
@@ -13,7 +12,9 @@ function App() {
     <BrowserRouter>
         <GlobalStyles />
         <DataProvider>
-          <Routes /> 
+          <TemplateProvider>
+            <Routes /> 
+          </TemplateProvider>
         </DataProvider>
     </BrowserRouter>
   );

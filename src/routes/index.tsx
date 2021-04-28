@@ -9,7 +9,7 @@ const Routes: React.FC = () => (
   <Switch>
     <Route path="/login" component={Login} />
     <PrivateRoute path="/home" component={Home} isPrivate />
-    <Route path="/template" component={Template} />
+    <Route path="/template/:kitId" component={Template} />
   </Switch>
 
 );

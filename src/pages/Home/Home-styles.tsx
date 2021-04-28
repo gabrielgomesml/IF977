@@ -248,10 +248,14 @@ export const ContainerEngagement = styled.div `
     flex-wrap:wrap;  
 `;
 
-export const Engagement = styled.div `
+export const Engagement = styled.div` 
+    #relatorio{
+        display:none;
+    }
     padding: 1.3vw;
     display:flex;
     flex-direction:column;
+    justify-content:center;
     background-color:#fff;
     margin: 0 2vw 2vw 0;
     width:14.5vw;
@@ -261,9 +265,22 @@ export const Engagement = styled.div `
     cursor: pointer;
     &&:hover{
         box-shadow:rgb(0,0,0,0.2) 0 0 0.6vw 0.4vw;
+        #relatorio{
+        display:flex;
+        font-size:1.3vw;
     }
-    
+        #information{display:none}
+        #tittle{font-size:1.2vw;}
+    }   
 `;
+
+export const Relatorio = styled.p`
+    justify-content:center;
+    font-weight:bold;
+    font-size:1.1vw;
+
+`;
+
 
 export const ContainerDivisionTitle = styled.div `
     display:flex;

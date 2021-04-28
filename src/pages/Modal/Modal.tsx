@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 
+import { Link } from 'react-router-dom';
 
 import {
   Container,
@@ -45,6 +46,15 @@ const Modal: React.FC<ModalProps> = ({setModalOpen, modalOpen, kitId}) => {
       }
       setModalOpen(false);
     }
+    setBackgroundHeader(false);
+    setHeaderQuantitative(false);
+    setDescription(false);
+    setParticipantsList(false);
+    setRefs(false);
+    setSharedlinks(false);
+    setAnswersBackground(false);
+    setCommentsAnswers(false);
+    setLikes(false);
     console.log(kitId);
   };
 
@@ -125,7 +135,8 @@ const Modal: React.FC<ModalProps> = ({setModalOpen, modalOpen, kitId}) => {
             </Toggle>
           </DivBody>
           <DivButton>
-            <Button type= 'submit' onClick={closeModal}>Gerar</Button>
+            <Button type= 'submit' onClick={closeModal} as={Link} to={
+              `/template/${kitId}-${backgroundHeader}-${headerQuantitative}-${description}-${participantsList}-${refs}-${sharedLinks}-${answersBackground}-${commentsAnswers}-${likes}`} target="_blank">Gerar</Button>
           </DivButton>
         </DivBackground>
       </Container>
