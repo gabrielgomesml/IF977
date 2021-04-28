@@ -125,6 +125,8 @@ export const Paragraph= styled.p`
 
 
 export const Button= styled.button` 
+  display: flex;
+  justify-content: center;
   align-items:center;
   font-weight: 500;
   font-size: 2.8vmin;
@@ -141,6 +143,8 @@ export const Button= styled.button`
   &:active{
     background:#02224d;
   }
+  text-decoration: none;
+  align-self: center;
 `;
 
 

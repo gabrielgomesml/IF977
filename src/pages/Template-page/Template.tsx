@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState, useCallback } from 'react';
+
+import { useTemplateContext } from '../../utils/templateContext';
+
+import { useParams } from 'react-router-dom';
 
 
 import {
@@ -16,20 +20,104 @@ import {
   ImgGadgets,ContainerTextGadgets,
   TextDescription,ContainerParticipants,
   NameParticipants,SizeContainerParticipants,
+  Question,
 
 
  
 
 } from './Template-styles';
 
-const Template: React.FC = () => { 
+interface ParamTypes {
+  kitId: string;
+}
+
+interface IKitProps {
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+  tier: string;
+  questions: any;
+  references: any;
+  created_at: string;
+  updated_at: string;
+  shared_references: any;
+}
+
+const Template: React.FC = ({}) => { 
+  const [options, setOptions] = useState<any>([]);
+  const [answers, setAnswers] = useState<any>();
+  const [kit, setKit] = useState<IKitProps>(() => {
+    return {} as IKitProps;
+  });
+  const axios = require('axios').default;
+  const { kitId } = useParams<ParamTypes>();
+
+  const handleOptions = () => {
+    if (kitId) {
+      setOptions(kitId.split('-'));
+    }
+  }
+
+  const loadKit =  async () => {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+        const res = await axios.get(`https://api.strateegia.digital/projects/v1/content/${options[0]}/`, {headers:{"Authorization":`Bearer ${token}`}})
+        const res2 = await axios.get(`https://api.strateegia.digital/projects/v1/content/${options[0]}/comment/report`, {headers:{"Authorization":`Bearer ${token}`}})
+        if (res && res.data && res2 && res2.data) {
+            setKit({
+              id: res.data.kit.id,
+              title: res.data.kit.title,
+              description: res.data.kit.description,
+              type: res.data.kit.type,
+              tier: res.data.kit.tier,
+              questions: res.data.kit.questions,
+              references: res.data.kit.references,
+              created_at: res.data.kit.created_at,
+              updated_at: res.data.kit.updated_at,
+              shared_references: res.data.attached_links,
+            })
+            console.log(res.data)
+        }
+    }
+  }
+  //"https://api.strateegia.digital/projects/v1/content/600f52ed9c8da6118a35878c/comment/report"
+
+  const loadAnswers = async () => {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+        const res = await axios.get(`https://api.strateegia.digital/projects/v1/content/${options[0]}/comment/report`, {headers:{"Authorization":`Bearer ${token}`}})
+        if (res && res.data) {
+            setAnswers(res.data);
+            console.log(res.data);
+        }
+    }
+  }
+
+  const changeInitials = (name: string) => {
+    const initials = name.split(" ");
+    return initials[0][0] + initials[initials.length - 1][0]
+  }
+
+  useEffect(() => {
+    handleOptions()
+  }, []);
+
+  useEffect(() => {
+    if (options[0]) {
+      loadKit();
+      loadAnswers();
+      //loadKitEngagement();
+    }
+  }, [options]);
+
   return (
     <Container>
       <ContainerLogo>
           <ContainerTittle>
             <ImgTittle src=" ../img/Originals/1.png"></ImgTittle>
             <ContainerTextTittle>
-              <TextTittle> TRABALHOS FIGITAIS </TextTittle>
+              <TextTittle> {kit.title} </TextTittle>
               <TextTittleP> Métodos de Trabalho </TextTittleP>
             </ContainerTextTittle>
 
@@ -56,48 +144,71 @@ const Template: React.FC = () => {
           </ContainerTittle>
       </ContainerLogo>
       <ContainerCenter>
-        <TittleCenter> Descrição</TittleCenter>
-        <TextDescription>
-        O trabalho mudou e muito desde a chegada da internet, mas foi agora,
-        no último ano, que essa mudança se tornou mais evidente. A pandemia do
-        COVID19 acelerou a mudança do trabalho como conhecíamos de físico para figital.
-        Traballho remoto é apenas uma ponta desse movimento, quase que a casca sintática de 
-        uma transformação semântica que resultou em uma mudança pragmática nos mercados.
-        </TextDescription>
+        {options[3] === 'true' ? (
+          <>
+          <TittleCenter> Descrição</TittleCenter>
+          <TextDescription>{kit.description}</TextDescription>
+          </>
+        ) : <></>}
+        {options[4] == 'true' ? (
+          <>
+          <TittleCenter> Participantes</TittleCenter>
+          <SizeContainerParticipants>
+            <ContainerParticipants>
+              <Initials> LI</Initials>
+              <NameParticipants>Lorem Ipsum is simply </NameParticipants>
+            </ContainerParticipants>
+            <ContainerParticipants>
+              <Initials> LI</Initials>
+              <NameParticipants>Lorem Ipsum is simply </NameParticipants>
+            </ContainerParticipants>
+            <ContainerParticipants>
+              <Initials> LI</Initials>
+              <NameParticipants>Lorem Ipsum is simply </NameParticipants>
+            </ContainerParticipants>
+          </SizeContainerParticipants>
+          </>
+        ) : <></>}
 
-        <TittleCenter> Participantes</TittleCenter>
-        <SizeContainerParticipants>
-          <ContainerParticipants>
-            <Initials> LI</Initials>
-            <NameParticipants>Lorem Ipsum is simply </NameParticipants>
-          </ContainerParticipants>
-          <ContainerParticipants>
-            <Initials> LI</Initials>
-            <NameParticipants>Lorem Ipsum is simply </NameParticipants>
-          </ContainerParticipants>
-          <ContainerParticipants>
-            <Initials> LI</Initials>
-            <NameParticipants>Lorem Ipsum is simply </NameParticipants>
-          </ContainerParticipants>
-        </SizeContainerParticipants>
+        {options[5] == 'true' ? (
+          <>
+          <TittleCenter> Referências</TittleCenter>
+            {kit?.references?.map((reference: {description: string; url: string; }) => (
+              <ContainerRef> 
+                <TittleRef>{reference.description}</TittleRef>
+                <LinkRef href={reference.url} target="_blank">{reference.url}</LinkRef>
+              </ContainerRef>
+            ))}
+          </>
+        ) : <></>}
 
+        {options[6] == 'true' ? (
+          <>
+          <TittleCenter> Links Compartilhados</TittleCenter>
+            {kit?.shared_references?.map((reference: { author: {  name: string; }, title: string; url: string;}) => (
+              <ContainerLinks>
+                <Initials>{changeInitials(reference.author.name)}</Initials>
+                <TextLink>
+                  <NameLinks>{reference.author.name}</NameLinks>
+                  <TittleLinks>{reference.title}</TittleLinks>
+                  <LinksC href={reference.url} target="_blank">{reference.url}</LinksC>
+                </TextLink>
+              </ContainerLinks>
+            ))}
+          </>
+        ) : <></>}
 
-        <TittleCenter> Referências</TittleCenter>
-          <ContainerRef> 
-            <TittleRef>Lorem Ipsum</TittleRef>
-            <LinkRef href="https://loremipsum.com.br/issimplydummy/textotheprinting" > https://loremipsum.com.br/issimplydummy/textotheprinting</LinkRef>
-          </ContainerRef>
+        {options[7] == 'true' ? (
+          <>
+          <TittleCenter>Perguntas</TittleCenter>
+            {kit.questions?.map((question: {id: string; question: string; }) => (
+              <>
+                <Question>{question.question}</Question>
+              </>
+            ))}
+          </>
+        ) : <></>}
 
-
-        <TittleCenter> Links Compartilhados</TittleCenter>
-        <ContainerLinks>
-          <Initials> WW</Initials>
-          <TextLink>
-            <NameLinks>Wilson Wagner dos Santos</NameLinks>
-            <TittleLinks> Lorem Ipsum</TittleLinks>
-            <LinksC href="https://loremipsum.com.br/issimplydummy/textotheprinting ">https://loremipsum.com.br/issimplydummy/textotheprinting</LinksC>
-          </TextLink>
-        </ContainerLinks>
       </ContainerCenter>  
 
 
