@@ -22,7 +22,29 @@ import {
 
 } from './Template-styles';
 
-const Template: React.FC = () => { 
+interface TemplateProps {
+  backgroundHeader: boolean;
+  headerQuantitative: boolean;
+  description: boolean;
+  participantsList: boolean;
+  refs: boolean;
+  sharedLinks: boolean;
+  answersBackground: boolean;
+  commentAnswers: boolean;
+  likes: boolean;
+}
+
+const Template: React.FC<TemplateProps> = ({
+  backgroundHeader,
+  headerQuantitative,
+  description,
+  participantsList,
+  refs,
+  sharedLinks,
+  answersBackground,
+  commentAnswers,
+  likes,
+  }) => { 
   return (
     <Container>
       <ContainerLogo>

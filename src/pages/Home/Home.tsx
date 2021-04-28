@@ -48,11 +48,17 @@ const Home: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projects, setProjects] = useState<any>([]);
   const [selectedProject, setSelectedProject] = useState('');
+  const [selectedKit, setSelectedKit] = useState('');
   const [Hexagono, setHexagono] = useState('');
   const [Pessoas, setPessoas] = useState<any>([]);
   const [kits, setKits] = useState<any>([]);
   const [statistics, setStatistics] = useState<any>();
   const axios = require('axios').default;
+
+  const handleClick = (kitId: string) => {
+      openOrCloseModal()
+      setSelectedKit(kitId);
+  }
 
   const openOrCloseModal = () => {
     setIsModalOpen(prev => !prev);
@@ -141,7 +147,7 @@ const Home: React.FC = () => {
         const res = await axios.get(`https://api.strateegia.digital/projects/v1/project/${projectId}/content-engagement`, {headers:{"Authorization":`Bearer ${token}`}})
         if (res && res.data) {
             setKits(res.data);
-            console.log(res.data)
+            //console.log(res.data)
         }
     }
   }
@@ -162,7 +168,7 @@ const Home: React.FC = () => {
   return (
     <>
     <BigContainer>
-        <Modal setModalOpen={setIsModalOpen} modalOpen={isModalOpen} ></Modal>
+        <Modal setModalOpen={setIsModalOpen} modalOpen={isModalOpen} kitId={selectedKit}></Modal>
         <ContainerMain>
 
             {/* MENU HEADER */}
@@ -244,7 +250,7 @@ const Home: React.FC = () => {
                         <ContainerEngagement>
                             {kits?.map((kit: { id: string; parent_comments_count: number; people_count: number; question_count: number; reply_comments_count: number; title: string; total_comments_count: number; type: string;}) => (
                                 
-                                <Engagement onClick={openOrCloseModal} onLoad={()=>Hex(kit.type)}>
+                                <Engagement onClick={() => handleClick(kit.id)} onLoad={()=>Hex(kit.type)}>
                                     <ContainerDivisionTitle>  
                                     <Pic src ={Hexagono} ></Pic>
                                     <TittleEngagement>{kit.title}</TittleEngagement>

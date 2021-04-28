@@ -18,9 +18,20 @@ import {
 interface ModalProps {
   modalOpen: any;
   setModalOpen: any;
+  kitId?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({setModalOpen, modalOpen}) => {
+const Modal: React.FC<ModalProps> = ({setModalOpen, modalOpen, kitId}) => {
+  const [backgroundHeader, setBackgroundHeader] = useState(false);
+  const [headerQuantitative, setHeaderQuantitative] = useState(false);
+  const [description, setDescription] = useState(false);
+  const [participantsList, setParticipantsList] = useState(false);
+  const [refs, setRefs] = useState(false);
+  const [sharedLinks, setSharedlinks] = useState(false);
+  const [answersBackground, setAnswersBackground] = useState(false);
+  const [commentsAnswers, setCommentsAnswers] = useState(false);
+  const [likes, setLikes] = useState(false);
+
 
   const modalRef = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -34,6 +45,7 @@ const Modal: React.FC<ModalProps> = ({setModalOpen, modalOpen}) => {
       }
       setModalOpen(false);
     }
+    console.log(kitId);
   };
 
   const keyPress = useCallback(
@@ -58,55 +70,55 @@ const Modal: React.FC<ModalProps> = ({setModalOpen, modalOpen}) => {
           <DivBody>
             <Head>Editar Relatório</Head>
             <Description>Escolha os elementos que estarão presentes </Description>
-            <Toggle>
+            <Toggle onChange={() => setBackgroundHeader(!backgroundHeader)}>
               <InputToggle type="checkbox"  id="foo"/>
               <LabelToggle  htmlFor = 'foo'/>
               <Paragraph>Background cabeçalho</Paragraph>
             </Toggle>
 
-            <Toggle>
+            <Toggle onChange={() => setHeaderQuantitative(!headerQuantitative)}>
               <InputToggle type="checkbox"  id="foo2"/>
               <LabelToggle  htmlFor = 'foo2'/>
               <Paragraph>Quantitativo cabeçalho</Paragraph>
             </Toggle>
 
-            <Toggle>
+            <Toggle onChange={() => setDescription(!description)}>
               <InputToggle type="checkbox"  id="foo3"/>
               <LabelToggle  htmlFor = 'foo3'/>
               <Paragraph>Descrição</Paragraph>
             </Toggle>
 
-            <Toggle>
+            <Toggle onChange={() => setParticipantsList(!participantsList)}>
               <InputToggle type="checkbox"  id="foo4"/>
               <LabelToggle  htmlFor = 'foo4'/>
               <Paragraph>Lista de participantes</Paragraph>
             </Toggle>
 
-            <Toggle>
+            <Toggle onChange={() => setRefs(!refs)}>
               <InputToggle type="checkbox"  id="foo5"/>
               <LabelToggle  htmlFor = 'foo5'/>
               <Paragraph>Referências</Paragraph>
             </Toggle>
 
-            <Toggle>
+            <Toggle onChange={() => setSharedlinks(!sharedLinks)}>
               <InputToggle type="checkbox"  id="foo6"/>
               <LabelToggle  htmlFor = 'foo6'/>
               <Paragraph>Links compartilhados</Paragraph>
             </Toggle>
 
-            <Toggle>
+            <Toggle onChange={() => setAnswersBackground(!answersBackground)}>
               <InputToggle type="checkbox"  id="foo7"/>
               <LabelToggle  htmlFor = 'foo7'/>
               <Paragraph>Background perguntas</Paragraph>
             </Toggle>
 
-            <Toggle>
+            <Toggle onChange={() => setCommentsAnswers(!commentsAnswers)}>
               <InputToggle type="checkbox"  id="foo8"/>
               <LabelToggle  htmlFor = 'foo8'/>
               <Paragraph>Respostas dos comentários</Paragraph>
             </Toggle>
 
-            <Toggle>
+            <Toggle onChange={() => setLikes(!likes)}>
               <InputToggle type="checkbox"  id="foo9"/>
               <LabelToggle  htmlFor = 'foo9'/>
               <Paragraph>Likes</Paragraph>
